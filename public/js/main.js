@@ -160,19 +160,22 @@ function createFinal() {
 	var keyboard = game.input.keyboard;
 	var KEYS = Phaser.Keyboard;
 
-	keyboard.onDownCallback = function (key) {
-		if (key.keyCode >= 49 && key.keyCode <= 57) {
-			setCurrentBoxById(key.keyCode - 48);
+	keyboard.onDownCallback = function (e) {
+		if (e.keyCode >= 37 && e.keyCode <= 40) {
+			e.preventDefault();
+			switch(e.keyCode) {
+				case 37: currentBox.moveLeft();
+					break;
+				case 38: currentBox.moveUp();
+					break;
+				case 39: currentBox.moveRight();
+					break;
+				case 40: currentBox.moveDown();
+					break;
+			}
 		}
-		else switch(key.keyCode) {
-			case 37: currentBox.moveLeft();
-				break;
-			case 38: currentBox.moveUp();
-				break;
-			case 39: currentBox.moveRight();
-				break;
-			case 40: currentBox.moveDown();
-				break;
+		else if (e.keyCode >= 49 && e.keyCode <= 57) {
+			setCurrentBoxById(e.keyCode - 48);
 		}
 	}
 }
