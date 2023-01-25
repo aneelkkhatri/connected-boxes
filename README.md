@@ -1,2 +1,2 @@
 # connected-boxes
-Game prototype of arranging connected boxes
+Game concept of arranging connected boxes
